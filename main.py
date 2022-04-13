@@ -44,7 +44,7 @@ class Check:
 
     def checker(self):
         lst=os.listdir(self.d)
-        print(lst)
+        #print(lst) DEBUG
         #lst.remove("dest_f")
         if (str(self.ff)+"_Files") not in lst:
             return False
@@ -160,11 +160,19 @@ def control():
         k.direcory_implement()
         k.moving()
     elif(h==2):#Ext transfer
-    	path = "D:/Arnav/temp work/test1"
+        path = "D:/Arnav/temp work/test1"
         #path = input("Please enter the target path:")
-        destination = "D:/Arnav/temp work/test1/dest_f"
+        destination = "D:/Arnav/BKP/test1"
         #destination = input("Please enter the target destination:")
-        k = Files(path, destination)
+        for i in os.listdir(path):
+            file=path+"/"+str(i)
+            send=destination+"/"+str(i)
+            try:
+                shutil.copy(file,send)
+            except PermissionError:
+                #print(i,":DEBUG")
+                print("Permission Denied, Skipping folders")	
+        k = Files(destination, destination+"/"+"dest_f")
         k.direcory_implement()
-        k.moving()   
+        k.moving()		
 control()        
