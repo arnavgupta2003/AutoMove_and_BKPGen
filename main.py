@@ -21,21 +21,20 @@ def auth():
     data = res.read()
     # print(data.decode("utf-8"))
     print()
-    print("Please check your email for verification ....")
-    print("We will wait for  you :)")
+    print("Please check your email for verification ..")
+    print("We will wait :)")
     ids = data.decode('utf-8')[13:-2]
     conn.request("GET", "/users/status?state_id=%s" % (ids), payload, headers)
     res = conn.getresponse()
     data = res.read()
     while data.decode('utf-8') == '{"authenticated":false}':
-        conn.request("GET", "/users/status?state_id=%s" %
-                     (ids), payload, headers)
+        conn.request("GET", "/users/status?state_id=%s" %(ids), payload, headers)
         res = conn.getresponse()
         data = res.read()
     else:
         print('Verified Sucessfully')
         email = uemail
-
+auth()
 
 class Check:
     def __init__(self, file_format, destination):
