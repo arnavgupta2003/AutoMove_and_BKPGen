@@ -142,7 +142,7 @@ def control():
     print("")
     print("-------------------------------------------------------------")
     print("Your available options are:")
-    print("-------------------------------------------------------------")
+    print("--------------------------------------------------------------")
     print("")
     print("1. Reorganise a cluttered folder on the basis of file format")
     print("2. Move all files of a directory to a specific folder(Gen BKP)")
